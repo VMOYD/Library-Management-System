@@ -1,10 +1,8 @@
-#include <iostream>
-#include <iomanip>
-#include <conio.h>
-#include <ctime>
-#include <string.h>
-#include <fstream>
-#include <cstdio>
+#include <iostream>    //Basic input output 
+#include <iomanip>     //to format the text setw and all 
+#include <curses.h>    //for getch() to hold the screen 
+#include <string.h>    //function related to string 
+#include <fstream>     //file related function 
 using namespace std;
 #define label cout << "<----------------LIBRARY MANAGEMENT SYSTEM---------------->\n\n";
 const int y = 50, x = 20;
