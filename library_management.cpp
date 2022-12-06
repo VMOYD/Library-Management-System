@@ -9,7 +9,7 @@ const int y = 50, x = 20;
 class library
 {
 public:
-    int b_ava, t_av_book;
+    int book_available, toal_avaialable_book; 
     char b_name[100], b_id[20], i_date[10], st_id[20];
     ofstream ofs;
     ifstream ifs;
@@ -49,16 +49,16 @@ void library::view_books()
          << "AVAILABLE"
          << left << setw(x)
          << "TOTAL BOOK" << endl;
-    while (ifs >> b_id >> b_name >> b_ava >> t_av_book)
+    while (ifs >> b_id >> b_name >> book_available >> toal_avaialable_book)
     {
         cout << left << setw(x)
              << b_id
              << left << setw(x)
              << b_name
              << left << setw(x)
-             << b_ava
+             << book_available
              << left << setw(x)
-             << t_av_book << endl;
+             << toal_avaialable_book << endl;
     }
     ifs.close();
     return;
@@ -100,7 +100,7 @@ search_menu:
          << "AVAILABLE"
          << left << setw(x)
          << "TOTAL BOOK" << endl;
-    while (ifs >> b_id >> b_name >> b_ava >> t_av_book)
+    while (ifs >> b_id >> b_name >> book_available >> toal_avaialable_book)
     {
         if (ch == 1 && strcmp(b_name, s_name) == 0)
         {
@@ -110,9 +110,9 @@ search_menu:
                  << left << setw(x)
                  << b_name
                  << left << setw(x)
-                 << b_ava
+                 << book_available
                  << left << setw(x)
-                 << t_av_book << endl;
+                 << toal_avaialable_book << endl;
         }
         else if (ch == 2 && strcmp(b_id, s_id) == 0)
         {
@@ -122,9 +122,9 @@ search_menu:
                  << left << setw(x)
                  << b_name
                  << left << setw(x)
-                 << b_ava
+                 << book_available
                  << left << setw(x)
-                 << t_av_book << endl;
+                 << toal_avaialable_book << endl;
         }
         else
         {
@@ -149,8 +149,8 @@ void librarian::modify()
         cout << "\nenter book name : ";
         cin >> b_name;
         cout << "\nenter quantity : ";
-        cin >> b_ava;
-        ofs << b_id << " " << b_name << " " << b_ava << " " << b_ava << "\n";
+        cin >> book_available;
+        ofs << b_id << " " << b_name << " " << book_available << " " << book_available << "\n";
         ofs.close();
     }
     else if (ch == 2)
@@ -177,15 +177,15 @@ void librarian::modify()
         }
         ifs.open("book_details.txt");
         ofs.open("temp.txt");
-        while (ifs >> b_id >> b_name >> b_ava >> t_av_book)
+        while (ifs >> b_id >> b_name >> book_available >> toal_avaialable_book)
         {
             if (strcmp(b_name, m_b_name) == 0)
             {
                 flag = 1;
                 cout << "enter new quantity ";
-                cin >> t_av_book;
+                cin >> toal_avaialable_book;
             }
-            ofs << b_id << " " << b_name << " " << b_ava << " " << t_av_book << "\n";
+            ofs << b_id << " " << b_name << " " << book_available << " " << toal_avaialable_book << "\n";
         }
         ofs.close();
         ifs.close();
@@ -229,12 +229,12 @@ void issue::issue_book()
     time_t now = time(0);
     ifs.open("book_details.txt");
     ofs.open("issue.txt", ios::app);
-    while (ifs >> b_id >> b_name >> b_ava >> t_av_book)
+    while (ifs >> b_id >> b_name >> book_available >> toal_avaialable_book)
     {
         if (strcmp(b_id, t_b_id) == 0)
         {
             flag = 1;
-            if (b_ava == 0)
+            if (book_available == 0)
             {
                 cout << "book is not available ";
                 ifs.close();
@@ -374,14 +374,14 @@ void issue::return_book()
     ofs.open("temp.txt");
     char xb_id[20], xb_name[20];
     int xb_ava, xt_av_book;
-    while (ifs >> xb_id >> xb_name >> xb_ava >> t_av_book)
+    while (ifs >> xb_id >> xb_name >> xb_ava >> toal_avaialable_book)
     {
         if (strcmp(b_id, t_b_id) == 0)
         {
             cout << "\nx\n";
             xb_ava += counter;
         }
-        ofs << xb_id << " " << xb_name << " " << xb_ava << " " << t_av_book << "\n";
+        ofs << xb_id << " " << xb_name << " " << xb_ava << " " << toal_avaialable_book << "\n";
     }
     ofs.close();
     ifs.close();
